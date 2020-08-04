@@ -206,32 +206,6 @@ CustomizedSnackbars.propTypes = {
   open: PropTypes.bool.isRequired,
   handleClose:PropTypes.func.isRequired,
   handleRequest: PropTypes.func,
-  // handleRequest: function(props, handleRequest, componentName) {
-  //   console.log("Props:", props)
-  //   if (!/matchme/.test(props[handleRequest])) {
-  //     return new Error( ' خطا در ورودی کامپوننت' +"\n"+
-  //       'Invalid prop `' + handleRequest + '` supplied to' +
-  //       ' `' + componentName + '`. Validation failed.'
-  //     );
-  //   }
-  // },
-
-  //  function(props, handleRequest,open,message, componentName){
-  //   if (!/matchme/.test(props[handleRequest])) {
-  //     return new Error( 
-  //     'Invalid prop `' + handleRequest + '` supplied to' +
-  //     ' `' + componentName + '`. Validation failed.'
-  //   );}
-  //   if (!/matchme/.test(props[open])) {
-  //     return new Error( 
-  //     'Invalid prop `' + open + '` supplied to' +
-  //     ' `' + componentName + '`. Validation failed.'
-  //   );}
-  //   if (!/matchme/.test(props[message])) {
-  //     return new Error( 
-  //     'Invalid prop `' + message + '` supplied to' + 
-  //     ' `' + componentName + '`. Validation failed.'
-  //   );}
-  // }
+  
 };
 

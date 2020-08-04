@@ -4,11 +4,7 @@ import validator from 'validator';
 //import Cookies from 'universal-cookie'
 import {Redirect} from 'react-router-dom'
 import CustomizedSnackbars from './CustomizedSnackbars'
-import RsuitAlert from './RsuitAlert';
-import { Alert  } from 'rsuite';
-import LineCharts from './Charts/LineCharts'
-import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, Button, ButtonToolbar,Input, InputGroup } from 'rsuite';
-const apiPost='http://192.168.110.52:5000/api/user';
+const apiPost='http://192.168.110.52:5000/api/customer';
 
 
 export default class User extends Component{
@@ -17,9 +13,9 @@ export default class User extends Component{
         this.state={
             fields: {
 
-                firstName: '',
-                lastName: '',
-                mobile: '',
+                name: '',
+                url: '',
+                image: ''
 
             },
             errors: {},
@@ -87,24 +83,10 @@ export default class User extends Component{
         let formIsValid = true;
 
         //Name
-        if (validator.isEmpty(fields.firstName)) {
+        if (validator.isEmpty(fields.name)) {
             formIsValid = false;
             errors["name"] = "نام نمیتواند خالی باشد";
         }
-        //Family
-        if (validator.isEmpty(fields.lastName)) {
-            formIsValid = false;
-            errors["family"] = "نام خانوادگی نمیتواند خالی باشد";
-        }
-          //Mobile
-        if(!validator.isNumeric(fields.mobile)){
-            formIsValid = false;
-            errors["mobile"] = "شماره همراه خود را وارد کنید"
-        }
-        else if (!validator.isLength(fields.mobile, { min: 11, max: 11 })) {
-        formIsValid = false;
-        errors["mobile"] = "فرمت اشتباه است";
-         }
         this.setState({ errors }, () => {
             return callback(formIsValid);
         });
@@ -125,11 +107,10 @@ export default class User extends Component{
         })
     }
     handleRequest() {
-            const {firstName,lastName,mobile} = this.state.fields;
+            const {name,image} = this.state.fields;
             //console.log(User)
-            axios.post(apiPost, {firstName,lastName,mobile})
+            axios.post(apiPost, {name,image})
                 .then(response => { 
-                    Alert.info('ثبت با موفقیت انجام شد', 50000000)
                     this.setState({isSuccess:true} );
                     this.setState({message:"ثبت کاربر با موفقیت انجام شد"})              
                        // alert(response.data.message);               
@@ -166,48 +147,32 @@ export default class User extends Component{
         this.setState({ isSuccess : false})
     }
     render(){
-        const { firstName, lastName,mobile} = this.state.fields;
+        const { name, image} = this.state.fields;
         const { errors } = this.state;
         return(
             <div className="form-group rtl">
-                <h2 style={{ color:'green' }}> پروفایل کاربر </h2>                
+                <h3 style={{ color:'green' }}>اطلاعات مشتری </h3>                
                 <form  className="col-lg-5" onSubmit={this.handleSubmit.bind(this)}  style={{ marginTop: 30 }}>
                     <div className="form-group rtl">
                         <label> نام: </label>
                         <input type="text"
                             className={["form-control rtl", errors["name"] ? 'is-invalid' : ''].join(' ')}
-                            name="firstName"
-                            value={firstName}
+                            name="name"
+                            value={name}
                             onChange={this.handleChange.bind(this)}
                             placeholder="لطفا نام خود را وارد نمائید"
                         />
-                        <span className="invalid-feedback rtl" style={{ display: errors["name"] ? 'block' : 'none' }}>{errors["name"]} </span>
-                        {/* <Input type="text" className={["form-control rtl", errors["name"] ? 'is-invalid' : ''].join(' ')}
-                            name="firstName"
-                            onChange={this.handleChange1.bind(this)}
-                            placeholder="لطفا نام خود را وارد نمائید" /> */}
+                                   <span className="invalid-feedback rtl" style={{ display: errors["name"] ? 'block' : 'none' }}>{errors["name"]} </span>
                     </div>
                     <div className="form-group rtl">
-                        <label> نام خانوادگی: </label>
+                        <label> عکس: </label>
                         <input type="text"
-                            className={["form-control", errors["family"] ? 'is-invalid' : ''].join(' ')}
-                            name="lastName"
-                            value={lastName}
+                            className="form-control"
+                            name="image"
+                            value={image}
                             onChange={this.handleChange.bind(this)}
-                            placeholder="لطفا نام خانوادگی خود را وارد نمائید"
+                            placeholder="عکس ..."
                         />
-                        <span className="invalid-feedback rtl" style={{ display: errors["family"] ? 'block' : 'none' }}>{errors["family"]} </span>
-                    </div>
-                    <div className="form-group rtl">
-                        <label> شماره موبایل: </label>
-                        <input type="text"
-                            className={["form-control", errors["mobile"] ? 'is-invalid' : ''].join(' ')}
-                            name="mobile"
-                            value={mobile}
-                            onChange={this.handleChange.bind(this)}
-                            placeholder="09...."
-                        />
-                        <span className="invalid-feedback rtl" style={{ display: errors["mobile"] ? 'block' : 'none' }}>{errors["mobile"]} </span>
                     </div>
                     <div className="form-group">
                     <button type="submit" className="btn btn-success" >ثبت </button>
@@ -215,8 +180,7 @@ export default class User extends Component{
                 </form>
                 <button className="btn"  onClick={this.backToList.bind(this)} style={{color:'green'}}> بازگشت به لیست</button>
                 <CustomizedSnackbars action={this.state.mode} message={this.state.message} open={this.state.isSuccess} handleClose={this.handleCloseCustomizadSnack.bind(this)}/>
-                <RsuitAlert />
-                 <LineCharts />
+
 
             </div>
         )

@@ -7,7 +7,7 @@ import { Z_FIXED } from 'zlib';
 import { Table } from 'rsuite';
 
 const { Column, HeaderCell, Cell, Pagination } = Table;
-const getUrl='http://192.168.110.52:5000/api/user';
+const getUrl='http://192.168.110.52:5000/api/customer';
 
 
 
@@ -28,9 +28,9 @@ export default class UserList extends Component{
             mode:'',
             message:'',
             fields: {
-                firstName: '',
-                lastName: '',
-                mobile: '',
+                name: '',
+                image: '',
+                url: '',
                 }                
         }
     }    
@@ -119,17 +119,17 @@ export default class UserList extends Component{
 
           <Column width={200} fixed>
             <HeaderCell>نام</HeaderCell>
-            <Cell dataKey="firstName" />
+            <Cell dataKey="name" />
           </Column>
 
           <Column width={200}>
-            <HeaderCell>نام خانوادگی</HeaderCell>
-            <Cell dataKey="lastName" />
+            <HeaderCell>Url</HeaderCell>
+            <Cell dataKey="url" />
           </Column>
 
           <Column width={200}>
-            <HeaderCell>شماره همراه</HeaderCell>
-            <Cell dataKey="mobile" />
+            <HeaderCell> عکس</HeaderCell>
+            <Cell dataKey="image" />
           </Column>
 
           <Column width={120} fixed="right">
