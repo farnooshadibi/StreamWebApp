@@ -106,8 +106,28 @@ export default class User extends Component{
             }           
         })
     }
+    convertImageTo64( img){
+        const {name,image} = this.state.fields;
+        const imageToBase64 = require('image-to-base64');
+        imageToBase64(image) // Path to the image
+    .then(
+        (response) => {
+            console.log(response); // "cGF0aC90by9maWxlLmpwZw=="
+        }
+    )
+    .catch(
+        (error) => {
+            console.log(error); // Logs an error if there was one
+        }
+    )
+
+    }
+    
+
     handleRequest() {
             const {name,image} = this.state.fields;
+            //var i = this.convertImageTo64(image);
+           // console.log("im", i);
             //console.log(User)
             axios.post(apiPost, {name,image})
                 .then(response => { 
