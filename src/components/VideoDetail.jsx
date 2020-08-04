@@ -31,10 +31,22 @@ export default class VideoDetail extends Component{
         //console.log(this.props);
         
     const {video} =this.state;
+    console.log(video.url)
         return(
-            <div className="rtl">
-            <h2> عنوان  : {video.name}</h2>
-            <video
+            <div className="rtl text-center">
+            <h3> عنوان  : {video.name}</h3>
+            <br />
+            {/* <video
+        controls
+        height="400"
+        width="550"
+        src={video.url}
+        data-viblast-key="ef2e322c-8725-49c9-b4d5-23c4e374d27f"
+        autoplay
+        >
+
+        </video> */}
+        <video
         controls
         height="400"
         width="550"
@@ -44,12 +56,12 @@ export default class VideoDetail extends Component{
         >
 
         </video>
-            <Player 
+            {/* <Player 
             playsInLine
             poster="/assets/poster.png"
             src={video.url}
-            />
-             </div>
+            /> */}
+        </div>
             
         )
     }
