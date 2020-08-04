@@ -1,22 +1,24 @@
 import React ,{Component} from 'react'
 import axios from 'axios'
 import Products from './Products'
+import VideoList from './VideoList';
 
 
 export default class Home extends Component{
     constructor(props){
         super(props);
         this.state ={
-            products : []
+            customers : []
         }
     }
 
     componentDidMount(){
-        axios.get('http://roocket.org/api/products')
+        axios.get('http://192.168.110.52:5000/api/customer')
         .then( response => {
-            const { data} = response.data.data;
+            console.log("response", response);
+            const { data} = response.data;
             this.setState({
-                products :data
+                customers :data
             })
            
         })
@@ -33,7 +35,7 @@ export default class Home extends Component{
                     </div>
                 </div>
             <div className="row rtl">
-                {this.state.products.map( (product , index) =><Products key={index} product={product} />)}
+                {this.state.customers.map( (customer , index) =><VideoList key={index} customer={customer} />)}
 
             </div>
            

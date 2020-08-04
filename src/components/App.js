@@ -16,6 +16,8 @@ import axios from 'axios';
 import 'rsuite/dist/styles/rsuite-default-rtl.css';
 import AdminLogin from './AdminLogin';
 import Product from './Product';
+import VideoDetail from './VideoDetail';
+
 
  class App extends Component{
     constructor(props){
@@ -56,7 +58,6 @@ import Product from './Product';
         return(
             <div>
                 <Header auth={this.state.isAuthenticate} logout={this.handleLogout.bind(this)} />
-                {/* <Demo auth={this.state.isAuthenticate} logout={this.handleLogout.bind(this)}/> */}
                 <div className="container">
                 <div style={{ paddingTop:80}}>
                 <Switch>
@@ -70,6 +71,7 @@ import Product from './Product';
                 <Route path="/user" component={UserList}/>
                 <Route path="/user-profile" component={User}/>
                 <Route path="/product/:id"  component={Product} />
+                <Route path="/video-detail/:id"  component={VideoDetail} />
                 <Route path="/user-profile/:id" component={User}/>
                 <Route  component={NoMatch}/>
                 </Switch>
