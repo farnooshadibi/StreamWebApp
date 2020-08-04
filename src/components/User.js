@@ -166,7 +166,7 @@ export default class User extends Component{
                     </div>
                     <div className="form-group rtl">
                         <label> عکس: </label>
-                        <input type="text"
+                        <input type="file"
                             className="form-control"
                             name="image"
                             value={image}
