@@ -1,6 +1,5 @@
 import React ,{Component} from 'react'
-import axios from 'axios'
-import Products from './Products'
+import axios from 'axios';
 import VideoList from './VideoList';
 import SearchBox from './search-box.component'
 

@@ -12,8 +12,6 @@ import PersistentDrawerRight from './PersistentDrawerRight'
 import GmailTreeView from './GmailTreeView'
 import ControlledTreeView from './ControlledTreeView'
 import Animation from './Animation'
-import AdvancedGridList from './AdvancedGridList'
-import CSSGrid from './CSSGrid'
 import  CustomizedHook from './CustomizadHook'
 import { Button } from 'rsuite';
 // import default style
@@ -106,10 +104,6 @@ export default class About extends Component{
                 <br />
                 {/* <ControlledTreeView /> */}
                 <Animation />
-                <br />
-                <AdvancedGridList />
-                <br />
-                <CSSGrid />
                 <br />
                 {/* < CustomizedHook /> */}
                 <br />

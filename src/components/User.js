@@ -4,6 +4,7 @@ import validator from 'validator';
 //import Cookies from 'universal-cookie'
 import {Redirect} from 'react-router-dom'
 import CustomizedSnackbars from './CustomizedSnackbars'
+import FileInputComponent from 'react-file-input-previews-base64'
 const apiPost='http://192.168.110.52:5000/api/customer';
 
 
@@ -15,7 +16,8 @@ export default class User extends Component{
 
                 name: '',
                 url: '',
-                image: ''
+                image: '',
+                base64Image: ''
 
             },
             errors: {},
@@ -119,26 +121,44 @@ export default class User extends Component{
             }           
         })
     }
-    convertImageTo64( img){
-        const {name,image} = this.state.fields;
-        const imageToBase64 = require('image-to-base64');
-        imageToBase64(image) // Path to the image
-    .then(
-        (response) => {
-            console.log(response); // "cGF0aC90by9maWxlLmpwZw=="
-        }
-    )
-    .catch(
-        (error) => {
-            console.log(error); // Logs an error if there was one
-        }
-    )
+    // convertImageTo64( img){
+    //     const {name,image} = this.state.fields;
+    //     const imageToBase64 = require('image-to-base64');
+    //     imageToBase64("https://image.freepik.com/free-photo/image-human-brain_99433-298.jpg") // Path to the image
+    // .then(
+    //     (response) => {
+    //         console.log(response); // "cGF0aC90by9maWxlLmpwZw=="
+    //     }
+    // )
+    // .catch(
+    //     (error) => {
+    //         console.log(error); // Logs an error if there was one
+    //     }
+    // )
 
-    }
+    // }
+
+    // getEmergencyFoundImg = urlImg => {
+    //     var img = new Image();
+    //     img.src = urlImg;
+    //     img.crossOrigin = 'Anonymous';
+      
+    //     var canvas = document.createElement('canvas'),
+    //       ctx = canvas.getContext('2d');
+      
+    //     canvas.height = img.naturalHeight;
+    //     canvas.width = img.naturalWidth;
+    //     ctx.drawImage(img, 0, 0);
+      
+    //     var b64 = canvas.toDataURL('image/png').replace(/^data:image.+;base64,/, '');
+    //     return b64;
+    //   }
+
     handleRequest() {
             const {name,image} = this.state.fields;
             //var i = this.convertImageTo64(image);
-           // console.log("im", i);
+            //var i  = this.getEmergencyFoundImg(image);
+            //console.log("im", i);
             //console.log(User)
             axios.post(apiPost, {name,image})
                 .then(response => { 
@@ -178,7 +198,7 @@ export default class User extends Component{
         this.setState({ isSuccess : false})
     }
     render(){
-        const { name, image} = this.state.fields;
+        const { name, image,base64Image} = this.state.fields;
         const { errors } = this.state;
         return(
             <div className="form-group rtl">
@@ -205,6 +225,16 @@ export default class User extends Component{
                             placeholder="عکس ..."
                         />
                     </div>
+
+                    {/* <FileInputComponent
+                    labelText="Select file"
+                    labelStyle={{fontSize:14}}
+                    multiple={false}
+                    value={image}
+                    callbackFunction={(file_arr)=>{this.setState({ image: file_arr.base64 }) ; console.log(this.state.fields.image)}}
+                    accept="image/*" 
+                    /> */}
+
                     <div className="form-group">
                     <button type="submit" className="btn btn-success" >ثبت </button>
                     </div>

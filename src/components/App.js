@@ -15,7 +15,6 @@ import Register from './Register';
 import axios from 'axios';
 import 'rsuite/dist/styles/rsuite-default-rtl.css';
 import AdminLogin from './AdminLogin';
-import Product from './Product';
 import VideoDetail from './VideoDetail';
 
 
@@ -70,7 +69,6 @@ import VideoDetail from './VideoDetail';
                 // <Route path="/login" render={(props) => <Login {...props} auth={this.state.isAuthenticate} login={this.handleLogin.bind(this)}/>}/>
                 <Route path="/user" component={UserList}/>
                 <Route path="/user-profile" component={User}/>
-                <Route path="/product/:id"  component={Product} />
                 <Route path="/video-detail/:id"  component={VideoDetail} />
                 <Route path="/user-profile/:id" component={User}/>
                 <Route  component={NoMatch}/>
