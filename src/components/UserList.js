@@ -131,6 +131,7 @@ export default class UserList extends Component{
 
           <Column width={200}>
             <HeaderCell> عکس</HeaderCell>
+            {/* <Image source={image} /> */}
             <Cell dataKey="image" />
           </Column>
 
