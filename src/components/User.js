@@ -66,11 +66,23 @@ export default class User extends Component{
         } )  
      }
     handleChange(event) {
+        //
+        let files = event.target.files;
+        console.log("file", event.target.files)
         let fields = this.state.fields;
+       // let reader = new FileReader();
         let target = event.target;
-        console.log("hhhhh",event.target )
         fields[target.name] = target.value;
         this.setState({ fields })
+     //   reader.readAsDataURL(files[0]);
+
+     //   reader.onload = (e) => {
+            
+            // this.setState({
+            //     fields:{image: e.target.result},
+            //   })
+        //}
+        //
     }
     handleChange1(event){
         console.log("hhhhh",event );
@@ -122,8 +134,6 @@ export default class User extends Component{
     )
 
     }
-    
-
     handleRequest() {
             const {name,image} = this.state.fields;
             //var i = this.convertImageTo64(image);
