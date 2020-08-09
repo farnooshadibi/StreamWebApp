@@ -235,6 +235,18 @@ export default class User extends Component{
                     accept="image/*" 
                     /> */}
 
+
+                    <div className="form-group rtl">
+                        <label> base64 </label>
+                        <input type="text"
+                            className="form-control"
+                            name="image"
+                            value={image}
+                            onChange={this.handleChange.bind(this)}
+                            placeholder="عکس ..."
+                        />
+                    </div>
+
                     <div className="form-group">
                     <button type="submit" className="btn btn-success" >ثبت </button>
                     </div>

@@ -2,7 +2,6 @@ import React , {Component} from 'react'
 import validator from 'validator';
 import axios from 'axios';
 import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, Button, ButtonToolbar,Input, InputGroup } from 'rsuite';
-import 'rsuite/dist/styles/rsuite-default-rtl.css'; //or ~rsuite/dist/styles/rsuite-dark.rtl.css
 
 export default class AdminLogin extends Component{
 
@@ -71,44 +70,39 @@ export default class AdminLogin extends Component{
     render(){
         const{ email , password} = this.state.fields;
         const{errors} = this.state;
+        
         return(
-            <div style={{marginBottom:100,
-                 marginLeft:200,
-                 marginRight:250 ,
-                 borderRadius: '10px',
-                 borderBottom: '1px solid green',
-                textAlign:"center",
-                maxWidth: '50em',
-                padding: '1.5em 2em 2em',
-                border: '3px solid #3CC740',
-                background: '#E6EEFA', }}>
-            <Form layout="horizontal" onSubmit={this.handleSubmit.bind(this)}  style={{ marginTop:30}} onChange={this.handleChange.bind(this)}>
-    <FormGroup>
-      <ControlLabel>نام کاربری</ControlLabel>
-      <FormControl
-     // onChange={this.handleChange.bind(this)}
-      placeholder="لطفا ایمیل خود را وارد نمایید"
-      className={["form-control" , errors["email"] ? 'is-invalid':'' ].join(' ')}
-      name="email"
-      />
-      <span className="invalid-feedback rtl" style={{display :errors["email"] ? 'block':'none'}}>{errors["email"]} </span>     
-    </FormGroup>
-    <FormGroup>
-      <ControlLabel>رمز عبور</ControlLabel>
-      <FormControl
-      name="password" 
-      type="password"
-      className={["form-control" , errors["password"] ? 'is-invalid':'' ].join(' ')}
-     // onChange={this.handleChange.bind(this)} 
-     />
-      <span className="invalid-feedback rtl" style={{display :errors["password"] ? 'block':'none'}}>{errors["password"]} </span>
-    </FormGroup>
-    <FormGroup>
-      <ButtonToolbar>
-        <Button color='green' appearance="primary" type="submit" style={{width:150}}>ورود</Button>
-      </ButtonToolbar>
-    </FormGroup>
-  </Form>                 
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-6">
+                <Form onSubmit={this.handleSubmit.bind(this)}  style={{ marginTop:30}} onChange={this.handleChange.bind(this)}>
+                    <FormGroup>
+                    <ControlLabel>نام کاربری</ControlLabel>
+                    <FormControl
+                    //style={{right:"50%"}}            
+                    // onChange={this.handleChange.bind(this)}
+                    placeholder="لطفا ایمیل خود را وارد نمایید"
+                    name="email"
+                    />
+                    </FormGroup>
+                    <FormGroup>
+                    <ControlLabel>رمز عبور</ControlLabel>
+                    <FormControl 
+                    name="password" 
+                    type="password"
+                    className={["form-control" , errors["password"] ? 'is-invalid':'' ].join(' ')}
+                    // onChange={this.handleChange.bind(this)} 
+                    />
+                    <span className="invalid-feedback rtl" style={{display :errors["password"] ? 'block':'none'}}>{errors["password"]} </span>
+                    </FormGroup>
+                    <FormGroup class="mt-3">
+                    
+                    <ButtonToolbar>
+                        <Button color='green' appearance="primary" type="submit" style={{width:150}}>ورود</Button>
+                    </ButtonToolbar>
+                    </FormGroup>
+                </Form>                 
+            </div>
             </div>
         )
     }
