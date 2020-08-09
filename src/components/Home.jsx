@@ -1,7 +1,7 @@
 import React ,{Component} from 'react'
 import axios from 'axios';
 import VideoList from './VideoList';
-import SearchBox from './search-box.component'
+import SearchBox from './SearchBox/SearchBox';
 
 
 export default class Home extends Component{
