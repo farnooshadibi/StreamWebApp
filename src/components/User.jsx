@@ -191,7 +191,7 @@ export default class User extends Component{
     }
     backToList(){
         console.log("gggg", this.props.history)
-        return this.props.history.push('/user')
+        return this.props.history.push('/user-list')
         // return <Redirect to="/user" />
     }
     handleCloseCustomizadSnack(){

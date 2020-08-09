@@ -3,7 +3,6 @@ import axios from'axios'
 import {Link} from 'react-router-dom'
 //import Cookies from 'universal-cookie'
 import CustomizedSnackbars ,{} from './CustomizedSnackbars'
-import { Z_FIXED } from 'zlib';
 import { Table } from 'rsuite';
 
 const { Column, HeaderCell, Cell, Pagination } = Table;

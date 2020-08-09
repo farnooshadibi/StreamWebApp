@@ -33,10 +33,7 @@ export default class AdminLogin extends Component{
         if(validator.isEmpty(fields.email)){
             formIsValid = false;
             errors["email"] = "فیلد ایمیل نباید خالی باشد";
-        } else if( ! validator.isEmail(fields.email)){
-            formIsValid = false;
-            errors["email"] = "فرمت ایمیل اشتباه است";
-        }
+        } 
           //Password
           if(validator.isEmpty(fields.password)){
             formIsValid = false;
@@ -51,10 +48,10 @@ export default class AdminLogin extends Component{
         axios.post('http://192.168.110.52:5000/api/admin/LoginPost' , { email , password})
         .then( response => 
             { return (console.log(response),
-            localStorage.setItem('api-token' , response.data.data),
+            //localStorage.setItem('api-token' , response.data.data),
             //this.props.login(),
             //this.setState({loading:false}),
-            this.props.history.push('/user')
+            this.props.history.push('/user-list')
         )}
         )
         .catch( (error) => console.log(error))
@@ -63,8 +60,11 @@ export default class AdminLogin extends Component{
         event.preventDefault();
         this.handleValidation( (valid) =>{
             if(valid){
+                console.log("qqq");
                this.handleRequest()
             }
+            else
+            console.log("false");
         })
     }
     render(){

@@ -21,24 +21,24 @@ import VideoDetail from './VideoDetail';
             isAuthenticate : true
         }
     }
-    componentDidMount(){
-        let apiToken = localStorage.getItem('api-token');
-       // console.log("api token" , apiToken)
+    // componentDidMount(){
+    //     let apiToken = localStorage.getItem('api-token');
+    //    // console.log("api token" , apiToken)
 
-        if(apiToken === null){
-           this.setState({
-               isAuthenticate : false
-           })
-        }else{
-            //axios 
-            axios.get(`http://192.168.110.54:5000/api/person/?api_token=${apiToken}`)
-            .then( response => this.setState({isAuthenticate :true}))
+    //     if(apiToken === null){
+    //        this.setState({
+    //            isAuthenticate : false
+    //        })
+    //     }else{
+    //         //axios 
+    //         axios.get(`http://192.168.110.54:5000/api/person/?api_token=${apiToken}`)
+    //         .then( response => this.setState({isAuthenticate :true}))
             
 
-            .catch( (error) => this.setState({isAuthenticate :false}))
+    //         .catch( (error) => this.setState({isAuthenticate :false}))
             
-        }
-    }
+    //     }
+    // }
 
     handleLogout(){
         localStorage.removeItem('api-token');
@@ -58,8 +58,9 @@ import VideoDetail from './VideoDetail';
                 <Switch>
                 <Route path="/" exact={true} component={Home} />
                 <Route path="/admin-login" component={AdminLogin}/>
-                <Route path="/login" render={(props) => <Login {...props} auth={this.state.isAuthenticate} login={this.handleLogin.bind(this)}/>}/>
+                {/* <Route path="/login" render={(props) => <Login {...props} auth={this.state.isAuthenticate} login={this.handleLogin.bind(this)}/>}/> */}
                 <Route path="/user-list" component={UserList}/>
+                <Route path="/user-profile" component={User}/>
                 <Route path="/user-profile/:id" component={User}/>
                 <Route path="/video-detail/:id"  component={VideoDetail} />
                 <Route  component={NoMatch}/>
