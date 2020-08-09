@@ -6,8 +6,8 @@ export default class NoMatch extends Component{
     render(){
         return(
             <div>
-                <h2> Not Found ! </h2>
-                <h3>Would you like to return <Link to="/">home</Link> instead?</h3>
+                <h2> صفحه مورد نظر یافت نشد ! </h2>
+                <h3>بازگشت به صفحه اصلی <Link to="/">خانه</Link> </h3>
             </div>
         )
     }

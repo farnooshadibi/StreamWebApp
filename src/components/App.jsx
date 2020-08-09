@@ -2,16 +2,12 @@ import React, {Component} from 'react';
 import Header from './sections/Header';
 import {Route , Switch} from 'react-router-dom';
 import Home from './Home';
-import About from './About';
 import '../styles/css/bootstrap.min.css';
 import '../styles/css/bootstrap-rtl.min.css';
 import NoMatch from './NoMatch';
 import User from './User';
 import UserList from'./UserList';
-import Matris from './Matris';
 import Login from './Login';
-import Demo from './Demo';
-import Register from './Register';
 import axios from 'axios';
 import 'rsuite/dist/styles/rsuite-default-rtl.css';
 import AdminLogin from './AdminLogin';
@@ -61,16 +57,11 @@ import VideoDetail from './VideoDetail';
                 <div style={{ paddingTop:80}}>
                 <Switch>
                 <Route path="/" exact={true} component={Home} />
-                <Route path="/about" component={About}/>
                 <Route path="/admin-login" component={AdminLogin}/>
-                <Route path="/matris" component={Matris}/>
                 <Route path="/login" render={(props) => <Login {...props} auth={this.state.isAuthenticate} login={this.handleLogin.bind(this)}/>}/>
-                <Route path="/register" component={Register} />
-                // <Route path="/login" render={(props) => <Login {...props} auth={this.state.isAuthenticate} login={this.handleLogin.bind(this)}/>}/>
-                <Route path="/user" component={UserList}/>
-                <Route path="/user-profile" component={User}/>
-                <Route path="/video-detail/:id"  component={VideoDetail} />
+                <Route path="/user-list" component={UserList}/>
                 <Route path="/user-profile/:id" component={User}/>
+                <Route path="/video-detail/:id"  component={VideoDetail} />
                 <Route  component={NoMatch}/>
                 </Switch>
                     </div>
