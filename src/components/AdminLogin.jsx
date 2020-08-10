@@ -73,8 +73,7 @@ export default class AdminLogin extends Component{
         
         return(
             <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-6">
+                <div class="col-lg-12">
                 <Form onSubmit={this.handleSubmit.bind(this)}  style={{ marginTop:30}} onChange={this.handleChange.bind(this)}>
                     <FormGroup>
                     <ControlLabel>نام کاربری</ControlLabel>
