@@ -48,10 +48,12 @@ export default class Home extends Component{
                 <div className="text-center">
                     <SearchBox placeholder='جست و جو' handleSearch={this.handleSearch} />
                 </div>
+            
                 <div className="row rtl">
                     {filteredCustomers.map( (customer , index) =><VideoList key={index} customer={customer} />)}
 
                 </div>
+            
            
             </div>
         )

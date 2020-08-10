@@ -46,16 +46,18 @@ export default class VideoDetail extends Component{
         >
 
         </video> */}
+        <center>
         <video
         controls
-        height="400"
-        width="550"
+        height="auto"
+        width="100%"
         src={video.url}
         data-viblast-key="ef2e322c-8725-49c9-b4d5-23c4e374d27f"
         autoplay
         >
 
         </video>
+        </center>
             {/* <Player 
             playsInLine
             poster="/assets/poster.png"

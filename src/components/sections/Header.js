@@ -23,10 +23,10 @@ export default class Header extends Component{
         <Link className="nav-link" to={{ pathname: '/user-profile', state: { mode:'add'} }}>افرودن کاربر جدید</Link>
         <Link className="nav-link" to="/About">درباره ما</Link> */}
     </ul>
-    <form className="form-inline my-2 my-lg-0 rtl">
+    {/* <form className="form-inline my-2 my-lg-0 rtl">
       <input className="form-control mr-sm-2" type="text" placeholder="جستجو" aria-label="Search"/>
       <button className="btn btn-secondary my-2 my-sm-0" type="submit">جستجو</button>
-    </form>
+    </form> */}
   </div>
  </nav> 
         )
