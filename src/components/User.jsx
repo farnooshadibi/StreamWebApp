@@ -1,10 +1,10 @@
-import React ,{Component} from 'react'
-import axios from 'axios'
+import React ,{Component} from 'react';
+import axios from 'axios';
 import validator from 'validator';
-//import Cookies from 'universal-cookie'
-import {Redirect} from 'react-router-dom'
-import CustomizedSnackbars from './CustomizedSnackbars'
-import FileInputComponent from 'react-file-input-previews-base64'
+import CustomizedSnackbars from './CustomizedSnackbars';
+import FileInputComponent from 'react-file-input-previews-base64';
+//import Cookies from 'universal-cookie';
+//import {Redirect} from 'react-router-dom';
 const apiPost='http://192.168.110.52:5000/api/customer';
 
 
@@ -12,19 +12,14 @@ export default class User extends Component{
     constructor(props){
         super(props);
         this.state={
-            fields: {
-
-                name: '',
-                url: '',
-                image: '',
-                base64Image: ''
-
-            },
             errors: {},
             Id:0,
             mode:'',
             isSuccess:false,
-            message:''
+            message:'',
+            name: '',
+            url: '',
+            image: ''
         }
     }
     componentDidMount(){
@@ -67,38 +62,13 @@ export default class User extends Component{
             this.setState({ isSuccess:true , mode:'error',message:'ثبت با خطا مواجه شد'})
         } )  
      }
-    handleChange(event) {
-        //
-        let files = event.target.files;
-        console.log("file", event.target.files)
-        let fields = this.state.fields;
-       // let reader = new FileReader();
-        let target = event.target;
-        fields[target.name] = target.value;
-        this.setState({ fields })
-     //   reader.readAsDataURL(files[0]);
-
-     //   reader.onload = (e) => {
-            
-            // this.setState({
-            //     fields:{image: e.target.result},
-            //   })
-        //}
-        //
-        
-    }
-    handleChange1(event){
-        console.log("hhhhh",event );
-        let fields = this.state.fields;
-        fields[event] = event;
-    }
     handleValidation(callback) {
-        let { fields } = this.state;
+        let name = this.state.name;
         let errors = {};
         let formIsValid = true;
 
         //Name
-        if (validator.isEmpty(fields.name)) {
+        if (validator.isEmpty(name)) {
             formIsValid = false;
             errors["name"] = "نام نمیتواند خالی باشد";
         }
@@ -121,50 +91,11 @@ export default class User extends Component{
             }           
         })
     }
-    // convertImageTo64( img){
-    //     const {name,image} = this.state.fields;
-    //     const imageToBase64 = require('image-to-base64');
-    //     imageToBase64("https://image.freepik.com/free-photo/image-human-brain_99433-298.jpg") // Path to the image
-    // .then(
-    //     (response) => {
-    //         console.log(response); // "cGF0aC90by9maWxlLmpwZw=="
-    //     }
-    // )
-    // .catch(
-    //     (error) => {
-    //         console.log(error); // Logs an error if there was one
-    //     }
-    // )
-
-    // }
-
-    // getEmergencyFoundImg = urlImg => {
-    //     var img = new Image();
-    //     img.src = urlImg;
-    //     img.crossOrigin = 'Anonymous';
-      
-    //     var canvas = document.createElement('canvas'),
-    //       ctx = canvas.getContext('2d');
-      
-    //     canvas.height = img.naturalHeight;
-    //     canvas.width = img.naturalWidth;
-    //     ctx.drawImage(img, 0, 0);
-      
-    //     var b64 = canvas.toDataURL('image/png').replace(/^data:image.+;base64,/, '');
-    //     return b64;
-    //   }
-
     handleRequest() {
-            const {name,image} = this.state.fields;
-            //var i = this.convertImageTo64(image);
-            //var i  = this.getEmergencyFoundImg(image);
-            //console.log("im", i);
-            //console.log(User)
+            const {name,image} = this.state;
             axios.post(apiPost, {name,image})
                 .then(response => { 
-                    this.setState({isSuccess:true} );
-                    this.setState({message:"ثبت کاربر با موفقیت انجام شد"})              
-                       // alert(response.data.message);               
+                    this.setState({isSuccess:true, message:"ثبت کاربر با موفقیت انجام شد"} );                           
                 })   
                 .catch((error) => {
                     console.log(error)
@@ -190,7 +121,6 @@ export default class User extends Component{
             })
     }
     backToList(){
-        console.log("gggg", this.props.history)
         return this.props.history.push('/user-list')
         // return <Redirect to="/user" />
     }
@@ -198,7 +128,7 @@ export default class User extends Component{
         this.setState({ isSuccess : false})
     }
     render(){
-        const { name, image,base64Image} = this.state.fields;
+        const { name, image} = this.state;
         const { errors } = this.state;
         return(
             <div className="form-group rtl">
@@ -210,48 +140,25 @@ export default class User extends Component{
                             className={["form-control rtl", errors["name"] ? 'is-invalid' : ''].join(' ')}
                             name="name"
                             value={name}
-                            onChange={this.handleChange.bind(this)}
+                            onChange= {(event) => {this.setState({name: event.target.value});}}
                             placeholder="لطفا نام خود را وارد نمائید"
                         />
-                                   <span className="invalid-feedback rtl" style={{ display: errors["name"] ? 'block' : 'none' }}>{errors["name"]} </span>
+                        <span className="invalid-feedback rtl" style={{ display: errors["name"] ? 'block' : 'none' }}>{errors["name"]} </span>
                     </div>
-                    <div className="form-group rtl">
-                        <label> عکس: </label>
-                        <input type="file"
-                            className="form-control"
-                            name="image"
-                            value={image}
-                            onChange={this.handleChange.bind(this)}
-                            placeholder="عکس ..."
-                        />
-                    </div>
-
-                    {/* <FileInputComponent
+                    <FileInputComponent
                     labelText="Select file"
                     labelStyle={{fontSize:14}}
                     multiple={false}
                     value={image}
-                    callbackFunction={(file_arr)=>{this.setState({ image: file_arr.base64 }) ; console.log(this.state.fields.image)}}
+                    callbackFunction={(file_arr)=>{this.setState({ image: file_arr.base64 }) ;}}
                     accept="image/*" 
-                    /> */}
-
-
-                    <div className="form-group rtl">
-                        <label> base64 </label>
-                        <input type="text"
-                            className="form-control"
-                            name="image"
-                            value={image}
-                            onChange={this.handleChange.bind(this)}
-                            placeholder="عکس ..."
-                        />
-                    </div>
+                    />
 
                     <div className="form-group">
                     <button type="submit" className="btn btn-success" >ثبت </button>
                     </div>
                 </form>
-                <button className="btn"  onClick={this.backToList.bind(this)} style={{color:'green'}}> بازگشت به لیست</button>
+                <button className="btn"  onClick={this.backToList.bind(this)} style={{color:'green'}}> بازگشت به لیست مشتریان</button>
                 <CustomizedSnackbars action={this.state.mode} message={this.state.message} open={this.state.isSuccess} handleClose={this.handleCloseCustomizadSnack.bind(this)}/>
 
 

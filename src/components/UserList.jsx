@@ -130,8 +130,10 @@ export default class UserList extends Component{
 
           <Column width={200}>
             <HeaderCell> عکس</HeaderCell>
-            {/* <Image source={image} /> */}
-            <Cell dataKey="image" />
+            
+            <Cell dataKey="image" style={{width:"100%" , height:'78rem' }}>
+            <img src={this.state.users.image} className="card-img-top"  style={{width:"100%" , height:'18rem' }}/>
+            </Cell>
           </Column>
 
           <Column width={120} fixed="right">
