@@ -19,7 +19,7 @@ export default class VideoList extends Component{
                         <h5 className="card-title">{customer.name}</h5>
                         {/* <p className="card-text">{customer.name.substr(0 , 100)} ...</p> */}
                         
-                        <Link className="btn btn-outline-info" style={{ textAlign:'center' }} to={`video-detail/${customer.id}`}> مشاهده</Link>
+                        <Link className="btn btn-danger" style={{ textAlign:'center' }} to={`video-detail/${customer.id}`}> مشاهده</Link>
                     </div>
                 </div>
             </div>
