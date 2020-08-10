@@ -1,8 +1,8 @@
 import React,{Component} from 'react'
 import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'rsuite';
-import 'rsuite/dist/styles/rsuite-default.css';
+
+
 
 export default class Header extends Component{
   goLogin(){
