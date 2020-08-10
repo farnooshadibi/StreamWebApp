@@ -103,7 +103,6 @@ export default class UserList extends Component{
         return(
           
             <div className="box-body rtl" style={{marginBottom:100, marginLeft:100,marginRight:100}}>
-              <image src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/JoePesci-2009.jpg/1200px-JoePesci-2009.jpg" thumbnail />
             <Link className="btn btn-success rtl" to={{ pathname: '/user-profile', state: {  mode:'add'} }}  >افزودن+</Link>
             <div>
             <Table
