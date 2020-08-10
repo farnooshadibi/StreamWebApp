@@ -73,7 +73,9 @@ export default class AdminLogin extends Component{
         
         return(
             <div justify="center">
-                <div class="col-lg-12">
+                <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-8">
                 <Form onSubmit={this.handleSubmit.bind(this)}  style={{ marginTop:30}} onChange={this.handleChange.bind(this)}>
                     <FormGroup>
                     <ControlLabel>نام کاربری</ControlLabel>
@@ -101,6 +103,7 @@ export default class AdminLogin extends Component{
                     </ButtonToolbar>
                     </FormGroup>
                 </Form>                 
+            </div>
             </div>
             </div>
         )
