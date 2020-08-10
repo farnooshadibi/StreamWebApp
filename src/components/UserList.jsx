@@ -3,7 +3,7 @@ import axios from'axios'
 import {Link} from 'react-router-dom'
 //import Cookies from 'universal-cookie'
 import CustomizedSnackbars ,{} from './CustomizedSnackbars'
-import { Table } from 'rsuite';
+import { Table} from 'rsuite';
 
 const { Column, HeaderCell, Cell, Pagination } = Table;
 const getUrl='http://192.168.110.52:5000/api/customer';
@@ -57,19 +57,15 @@ export default class UserList extends Component{
         //this.handleDelete(id)
       }    
     handleClose() {
-        //setOpen(false);
-        this.setState({setOpen:false})
-        this.setState({open:false})
+        this.setState({setOpen:false, open:false})
       }   
     handleDelete(id) {
         const {userId} = this.state;
         this.setState({mode:'submit'})
       // if (window.confirm("Do you want delete this User?")) {
-            axios.delete(`https://localhost:44397/api/user/${userId}`)
+            axios.delete(`http://192.168.110.52:5000/api/customer/${userId}`)
                 .then(response => {
-                    this.setState({ open:true});
-                    this.setState({message:"کاربر مورد نظر باموفقیت حذف شد"}); 
-                       // alert(response.data);
+                    this.setState({ open:true , message:"کاربر مورد نظر باموفقیت حذف شد"});
                         this.getUserList();
                 })               
                 .catch((error) => {
@@ -80,11 +76,7 @@ export default class UserList extends Component{
                 this.setState({open:false})
        // }
     }
-    handleEdit(id){
-        //const cookies = new Cookies();
-        //cookies.set('userId', id,{path:'/user'})
-        //console.log(cookies.get('userId'))       
-     }
+
      handleClick() {
         this.setState({setOpenSnack:true})
         this.setState({openSnack:true})
@@ -109,7 +101,7 @@ export default class UserList extends Component{
           height={400}
           data={this.state.users}
           onRowClick={data => {
-            console.log(data);
+            console.log("data", data);
           }}
         >
            <Column width={70} align="center" fixed>
@@ -128,11 +120,8 @@ export default class UserList extends Component{
           </Column>
 
           <Column width={200}>
-            <HeaderCell> عکس</HeaderCell>
-            
-            <Cell dataKey="image" style={{width:"100%" , height:'78rem' }}>
-            <img src={this.state.users.image} className="card-img-top"  style={{width:"100%" , height:'18rem' }}/>
-            </Cell>
+            <HeaderCell> عکس</HeaderCell>         
+            <Cell dataKey="image" style={{width:"100%" , height:'78rem' }} />
           </Column>
 
           <Column width={120} fixed="right">

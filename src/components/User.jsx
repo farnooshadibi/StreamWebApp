@@ -43,16 +43,14 @@ export default class User extends Component{
         //console.log("cookie",cookies.get('userId'))
     }
     handleEdit(userId) {              
-        axios.get(`http://192.168.110.52:5000/api/user/${userId}`)
+        axios.get(`http://192.168.110.52:5000/api/customer/${userId}`)
         .then(
             response => {
                 this.setState(prevState => ({
-                    fields: {
                         ...prevState.fields,
-                        firstName: response.data.firstName,
-                        lastName: response.data.lastName,
-                        mobile: response.data.mobile
-                    },
+                        name: response.data.name,
+                        url: response.data.url,
+                        image: response.data.image
                 })
                 )
             }
@@ -104,14 +102,12 @@ export default class User extends Component{
             )
     }
     handleSubmitEdit() {        
-        const {firstName,lastName, mobile} = this.state.fields;
-        axios.put(`http://192.168.110.52:5000/api/user/${this.state.Id}`, { firstName, lastName, mobile })
+        const {Id, name,url, image} = this.state;
+        axios.put(`http://192.168.110.52:5000/api/customer/`, {Id, name,url, image})
             .then(response => { 
              //alert(response.data.message);
 
-             this.setState({ isSuccess : true});
-             this.setState({message:"ویرایش اطلاعات با موفقیت انجام شد"})
-             
+             this.setState({ isSuccess : true, message:"ویرایش اطلاعات با موفقیت انجام شد"});             
             })
             // .then(this.props.history.push('/user'))
             .catch(error => {
@@ -132,7 +128,7 @@ export default class User extends Component{
         const { errors } = this.state;
         return(
             <div className="form-group rtl">
-                <h3 style={{ color:'green' }}>اطلاعات مشتری </h3>                
+                <h5 style={{ color:'green' }}>اطلاعات مشتری </h5>                
                 <form  className="col-lg-5" onSubmit={this.handleSubmit.bind(this)}  style={{ marginTop: 30 }}>
                     <div className="form-group rtl">
                         <label> نام: </label>
@@ -145,20 +141,30 @@ export default class User extends Component{
                         />
                         <span className="invalid-feedback rtl" style={{ display: errors["name"] ? 'block' : 'none' }}>{errors["name"]} </span>
                     </div>
-                    <FileInputComponent
-                    labelText="Select file"
+                    <div className="form-group rtl">
+                        <label> عکس: </label>
+                        {this.state.mode === 'edit'?
+                        <img src={image} style={{width:"100%" , height:'15rem' }}/>
+                         : null
+                         }                        
+                        <FileInputComponent
+                    labelText="انتخاب عکس"
                     labelStyle={{fontSize:14}}
                     multiple={false}
                     value={image}
                     callbackFunction={(file_arr)=>{this.setState({ image: file_arr.base64 }) ;}}
                     accept="image/*" 
-                    />
+                    />            
+                    </div>
+
 
                     <div className="form-group">
-                    <button type="submit" className="btn btn-success" >ثبت </button>
+                    <br />
+                    <button type="submit" className="btn btn-success"  style={{marginLeft:10}}>ثبت </button> 
+                    <button className="btn btn-info"  onClick={this.backToList.bind(this)} > بازگشت به لیست مشتریان</button>
                     </div>
                 </form>
-                <button className="btn"  onClick={this.backToList.bind(this)} style={{color:'green'}}> بازگشت به لیست مشتریان</button>
+                
                 <CustomizedSnackbars action={this.state.mode} message={this.state.message} open={this.state.isSuccess} handleClose={this.handleCloseCustomizadSnack.bind(this)}/>
 
 
