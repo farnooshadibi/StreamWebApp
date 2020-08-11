@@ -12,6 +12,7 @@ import axios from 'axios';
 import 'rsuite/dist/styles/rsuite-default-rtl.css';
 import AdminLogin from './AdminLogin';
 import VideoDetail from './VideoDetail';
+import Footer from './Footer';
 
 
  class App extends Component{
@@ -65,8 +66,10 @@ import VideoDetail from './VideoDetail';
                 <Route path="/video-detail/:id"  component={VideoDetail} />
                 <Route  component={NoMatch}/>
                 </Switch>
+                
                     </div>
-                </div>                
+                </div>  
+                <Footer />              
             </div>
         )
     }

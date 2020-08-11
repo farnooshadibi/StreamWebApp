@@ -12,7 +12,7 @@ export default class Header extends Component{
     render(){
         return(
 
-            <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top rtl">
+            <nav style={{backgroundColor:"#000"}} className="navbar navbar-expand-md navbar-dark fixed-top rtl">
 <Link className="navbar-brand" to="/">داشبورد</Link>
   <div className="navbar-collapse collapse" id="navbarsExampleDefault" >
     <ul className="navbar-nav mr-auto">  

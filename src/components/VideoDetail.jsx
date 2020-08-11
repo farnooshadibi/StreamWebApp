@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Player} from 'video-react';
-import "../../node_modules/video-react/dist/video-react.css"
 
 
 export default class VideoDetail extends Component{

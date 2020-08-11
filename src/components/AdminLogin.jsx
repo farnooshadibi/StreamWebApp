@@ -1,7 +1,7 @@
 import React , {Component} from 'react'
 import validator from 'validator';
 import axios from 'axios';
-import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, Button, ButtonToolbar,Input, InputGroup, FlexboxGrid } from 'rsuite';
+import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, Button, ButtonToolbar,Input, InputGroup } from 'rsuite';
 
 export default class AdminLogin extends Component{
 
@@ -72,8 +72,8 @@ export default class AdminLogin extends Component{
         const{errors} = this.state;
         
         return(
-            <div justify="center">
-                <div class="col-lg-12">
+            <div class="row">
+                <div class="col-md-6">
                 <Form onSubmit={this.handleSubmit.bind(this)}  style={{ marginTop:30}} onChange={this.handleChange.bind(this)}>
                     <FormGroup>
                     <ControlLabel>نام کاربری</ControlLabel>
