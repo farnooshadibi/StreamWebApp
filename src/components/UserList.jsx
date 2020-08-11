@@ -3,7 +3,7 @@ import axios from'axios'
 import {Link} from 'react-router-dom'
 //import Cookies from 'universal-cookie'
 import CustomizedSnackbars ,{} from './CustomizedSnackbars'
-import { Table} from 'rsuite';
+import { Table, Button} from 'rsuite';
 
 const { Column, HeaderCell, Cell, Pagination } = Table;
 const getUrl='http://192.168.110.52:5000/api/customer';
@@ -98,7 +98,7 @@ export default class UserList extends Component{
             <Link className="btn btn-success rtl" to={{ pathname: '/user-profile', state: {  mode:'add'} }}  >افزودن+</Link>
             <div>
             <Table
-          height={400}
+          height={500}
           data={this.state.users}
           onRowClick={data => {
             console.log("data", data);
@@ -143,11 +143,11 @@ export default class UserList extends Component{
           <Column width={120} fixed="right">
             <HeaderCell>حذف</HeaderCell>
 
-            <Cell>
+            <Cell style={{height:100}}>
               {rowData => {
                 return (
-                  <span>                   
-                    <a   onClick={ () => { this.handleClickOpen(rowData.id) } }>حذف</a>
+                  <span>
+                    <Button appearance="subtle" color="red"  onClick={ () => { this.handleClickOpen(rowData.id) } }> حذف</Button>                   
                   </span>
                 );
               }}
