@@ -1,7 +1,7 @@
 import React , {Component} from 'react'
 import validator from 'validator';
 import axios from 'axios';
-import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, Button, ButtonToolbar,Input, InputGroup } from 'rsuite';
+import { Form, FormGroup, FormControl, ControlLabel, Button, ButtonToolbar } from 'rsuite';
 
 export default class AdminLogin extends Component{
 
@@ -74,6 +74,11 @@ export default class AdminLogin extends Component{
         return(
             <div class="row">
                 <div class="col-md-6">
+
+            <div justify="center">
+                <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-8">
                 <Form onSubmit={this.handleSubmit.bind(this)}  style={{ marginTop:30}} onChange={this.handleChange.bind(this)}>
                     <FormGroup>
                     <ControlLabel>نام کاربری</ControlLabel>
@@ -101,6 +106,9 @@ export default class AdminLogin extends Component{
                     </ButtonToolbar>
                     </FormGroup>
                 </Form>                 
+            </div>
+            </div>
+            </div>
             </div>
             </div>
         )
