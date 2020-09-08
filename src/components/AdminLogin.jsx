@@ -72,6 +72,9 @@ export default class AdminLogin extends Component{
         const{errors} = this.state;
         
         return(
+            <div class="row">
+                <div class="col-md-6">
+
             <div justify="center">
                 <div class="row">
                 <div class="col-lg-4"></div>
@@ -103,6 +106,8 @@ export default class AdminLogin extends Component{
                     </ButtonToolbar>
                     </FormGroup>
                 </Form>                 
+            </div>
+            </div>
             </div>
             </div>
             </div>

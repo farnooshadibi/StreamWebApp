@@ -4,6 +4,7 @@ import VideoList from './VideoList';
 import SearchBox from './SearchBox/SearchBox';
 
 
+
 export default class Home extends Component{
     constructor(props){
         super(props);
@@ -36,7 +37,6 @@ export default class Home extends Component{
         const filteredCustomers = customers.filter(customer => {
             return customer.name.toLowerCase().includes(searchField.toLowerCase());
         });
-        console.log(this.state.customers)
         return(
             <div>
                 <div className="jumbotron rtl">
@@ -48,12 +48,10 @@ export default class Home extends Component{
                 <div className="text-center">
                     <SearchBox placeholder='جست و جو' handleSearch={this.handleSearch} />
                 </div>
-            
                 <div className="row rtl">
                     {filteredCustomers.map( (customer , index) =><VideoList key={index} customer={customer} />)}
 
                 </div>
-            
            
             </div>
         )
