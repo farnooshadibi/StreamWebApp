@@ -12,6 +12,7 @@ import axios from 'axios';
 import 'rsuite/dist/styles/rsuite-default-rtl.css';
 import AdminLogin from './AdminLogin';
 import VideoDetail from './VideoDetail';
+import Bootstraptab from './BootstrapTable';
 
 
  class App extends Component{
@@ -61,6 +62,7 @@ import VideoDetail from './VideoDetail';
                 {/* <Route path="/login" render={(props) => <Login {...props} auth={this.state.isAuthenticate} login={this.handleLogin.bind(this)}/>}/> */}
                 <Route path="/user-list" component={UserList}/>
                 <Route path="/user-profile" component={User}/>
+                <Route path="/Bootstraptab" component={Bootstraptab}/>
                 <Route path="/user-profile/:id" component={User}/>
                 <Route path="/video-detail/:id"  component={VideoDetail} />
                 <Route  component={NoMatch}/>
