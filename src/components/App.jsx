@@ -9,7 +9,7 @@ import User from './User';
 import UserList from'./UserList';
 import Login from './Login';
 import axios from 'axios';
-import 'rsuite/dist/styles/rsuite-default-rtl.css';
+//import 'rsuite/dist/styles/rsuite-default-rtl.css';
 import AdminLogin from './AdminLogin';
 import VideoDetail from './VideoDetail';
 import Bootstraptab from './BootstrapTable';

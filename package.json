@@ -27,7 +27,6 @@
     "validator": "^11.1.0",
     "video-react": "^0.14.1"
   },
-
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
