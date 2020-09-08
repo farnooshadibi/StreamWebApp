@@ -12,11 +12,8 @@ import axios from 'axios';
 import 'rsuite/dist/styles/rsuite-default-rtl.css';
 import AdminLogin from './AdminLogin';
 import VideoDetail from './VideoDetail';
-<<<<<<< HEAD
 import Bootstraptab from './BootstrapTable';
-=======
 import Footer from './Footer';
->>>>>>> aea25c5f2646ad343b1037a391eb7b0e4f9ca655
 
 
  class App extends Component{

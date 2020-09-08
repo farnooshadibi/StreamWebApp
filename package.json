@@ -21,18 +21,16 @@
     "react-file-input-previews-base64": "^1.0.8",
     "react-plyr": "^2.2.0",
     "react-router-dom": "^5.0.1",
-<<<<<<< HEAD
     "react-scripts": "^3.4.3",
-=======
     "react-scripts": "^3.4.1",
     "react-share": "^4.2.1",
     "react-social-sharing": "^3.3.0",
->>>>>>> aea25c5f2646ad343b1037a391eb7b0e4f9ca655
     "react-swipeable-views": "^0.13.3",
     "universal-cookie": "^4.0.2",
     "validator": "^11.1.0",
     "video-react": "^0.14.1"
   },
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
