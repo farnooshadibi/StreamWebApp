@@ -24,7 +24,7 @@
     "react-social-sharing": "^3.3.0",
     "react-swipeable-views": "^0.13.3",
     "universal-cookie": "^4.0.2",
-    "validator": "^11.1.0",
+    "validator": "^13.7.0",
     "video-react": "^0.14.1"
   },
   "scripts": {
